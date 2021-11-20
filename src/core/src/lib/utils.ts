@@ -108,7 +108,13 @@ export function reverseDeepMerge(dest: any, ...args: any[]) {
   args.forEach((src) => {
     for (const srcArg in src) {
       if (isNil(dest[srcArg]) || isBlankString(dest[srcArg])) {
+        console.log(dest)
+        console.log(srcArg)
+        console.log(src)
+        console.log(src[srcArg])
+        try{
         dest[srcArg] = clone(src[srcArg]);
+        }catch(e){console.log(e)}
       } else if (objAndSameType(dest[srcArg], src[srcArg])) {
         reverseDeepMerge(dest[srcArg], src[srcArg]);
       }
